@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 import asyncHandler from "express-async-handler";
 
+// protect is the name of our middleware
 const protect = asyncHandler(async (req, res, next) => {
   let token;
 
@@ -10,6 +11,7 @@ const protect = asyncHandler(async (req, res, next) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     try {
+      // by the next two lines we are going to verify our token
       token = req.headers.authorization.split(" ")[1];
 
       //decodes token id
@@ -22,7 +24,7 @@ const protect = asyncHandler(async (req, res, next) => {
       res.status(401);
       throw new Error("Not authorized, token failed");
     }
-  }
+  } 
 
   if (!token) {
     res.status(401);

@@ -11,7 +11,7 @@ import "./LoginScreen.css";
 function LoginScreen({ history }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+ 
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -33,7 +33,7 @@ function LoginScreen({ history }) {
       <div className="loginContainer">
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {loading && <Loading />}
-        <Form onSubmit={submitHandler}>
+          <Form onSubmit={submitHandler}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
